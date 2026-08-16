@@ -1,0 +1,13 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- ArchiMate Work Package / Loop with Arrow -->
+
+ <!-- Circular loop crossing into horizontal base -->
+ <!-- Solid Arrowhead -->
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_3">
+   <path transform="rotate(26.4386 26.1304 19.1287)" id="svg_1" stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#222938" fill="none" d="m36.28602,23.21333c0.29929,-0.71995 0.43158,-0.83185 0.64948,-1.64282a13,13 0 1 0 -9,10l13.15847,-6.66119"/>
+   <polygon stroke="#222938" id="svg_2" stroke-linejoin="round" fill="#222938" points="37.70380783081055,25.49727964401245 48.40217590332031,31.049193859100342 37.70380783081055,36.6011118888855 "/>
+  </g>
+ </g>
+</svg>

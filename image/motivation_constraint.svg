@@ -1,0 +1,9 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- ArchiMate Constraint / Parallelogram with dividing line -->
+
+ <g>
+  <title>Layer 1</title>
+  <polygon id="svg_1" stroke-linejoin="round" stroke-width="2" stroke="#222938" fill="#d1badc" points="12,4.6124372482299805 46,4.6124372482299805 38,26.61243724822998 4,26.61243724822998 "/>
+  <line id="svg_2" stroke-linecap="round" stroke-width="2" stroke="#222938" y2="26.61244" x2="10" y1="4.61244" x1="18"/>
+ </g>
+</svg>

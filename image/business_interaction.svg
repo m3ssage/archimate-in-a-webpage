@@ -1,0 +1,10 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Left Semicircle -->
+
+ <!-- Right Semicircle -->
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" stroke-linejoin="round" stroke-width="2" fill="#edd779" d="m21.8492,2.04764a20.17826,22.85174 0 0 0 0,45.70349l0,-45.70349z" stroke="#222938"/>
+  <path id="svg_2" stroke-linejoin="round" stroke-width="2" fill="#edd779" d="m27.90268,2.04764a20.17826,22.85174 0 0 1 0,45.70349l0,-45.70349z" stroke="#222938"/>
+ </g>
+</svg>

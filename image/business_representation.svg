@@ -1,0 +1,10 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Outer Profile -->
+
+ <!-- Horizontal Flange Line -->
+ <g>
+  <title>Layer 1</title>
+  <path stroke="#222938" id="svg_1" stroke-linejoin="round" stroke-width="2" fill="#edd779" d="m1.58356,1.50136l46.83288,0l0,23.65273c-3.19315,-6.2244 -9.32036,-7.7728 -13.83699,-7.46928c-4.51663,0.30352 -9.48239,1.67156 -11.10117,11.06315c-1.61879,9.39159 -21.89472,10.09981 -21.89472,-2.34899l0,-24.89761z"/>
+  <line stroke="#222938" id="svg_2" stroke-width="2" y2="8.97064" x2="48.41644" y1="8.97064" x1="1.58356"/>
+ </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Rounded squircle body -->
+
+ <!-- Exclamation bar -->
+ <!-- Exclamation dot -->
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" stroke-linejoin="round" stroke-width="2" stroke="#222938" fill="#d1badc" d="m19.46304,1.39749c-6,0 -9,3 -9,9c0,6.5 0,13.5 0,20c0,6 3,9 9,9c6.5,0 13.5,0 20,0c6,0 9,-3 9,-9c0,-6.5 0,-13.5 0,-20c0,-6 -3,-9 -9,-9l-20,0z"/>
+  <path id="svg_2" fill="#222938" d="m27.86304,11.89749l3.2,0l-0.6,13l-2,0l-0.6,-13z"/>
+  <circle id="svg_3" fill="#222938" r="2.2" cy="30.39749" cx="29.46304"/>
+ </g>
+</svg>

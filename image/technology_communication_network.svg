@@ -1,0 +1,15 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Connecting Quadrilateral -->
+
+ <!-- Node Dots -->
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="svg_6">
+   <polygon stroke="#222938" id="svg_1" stroke-linejoin="round" stroke-width="2" fill="none" points="26.717081546783447,5.6806840896606445 44.00248050689697,5.6806840896606445 37.829123735427856,27.31093168258667 20.54372477531433,27.31093168258667 "/>
+   <circle stroke="null" id="svg_2" fill="#222938" r="4.80672" cy="5.68068" cx="26.71708"/>
+   <circle stroke="null" id="svg_3" fill="#222938" r="4.80672" cy="5.68068" cx="44.00248"/>
+   <circle stroke="null" id="svg_4" fill="#222938" r="4.80672" cy="27.31093" cx="20.54372"/>
+   <circle stroke="null" id="svg_5" fill="#222938" r="4.80672" cy="27.31093" cx="37.82912"/>
+  </g>
+ </g>
+</svg>

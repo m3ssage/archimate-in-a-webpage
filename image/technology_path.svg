@@ -1,0 +1,12 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Left Arrow Head -->
+
+ <!-- Center Dotted/Dashed Line -->
+ <!-- Right Arrow Head -->
+ <g>
+  <title>Layer 1</title>
+  <polyline stroke="#222938" id="svg_1" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" points="13.968832149590526,1.5528621673583984 1.580474903015329,13.040449046723097 13.968832149590526,24.528035926087796 "/>
+  <line stroke="#222938" id="svg_2" stroke-dasharray="1 4" stroke-linecap="round" stroke-width="2" y2="13.04045" x2="43.27779" y1="13.04045" x1="9.2098"/>
+  <polyline stroke="#222938" id="svg_3" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" points="35.64846371307431,1.5528621673583984 48.03681945800781,13.040449046723097 35.64846371307431,24.528035926087796 "/>
+ </g>
+</svg>

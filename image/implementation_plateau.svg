@@ -1,0 +1,15 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- ArchiMate Plateau / Three staggered horizontal bars -->
+
+ <!-- Bovenste balk -->
+ <!-- Middelste balk -->
+ <!-- Onderste balk -->
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="svg_4">
+   <rect stroke="#222938" id="svg_1" stroke-linejoin="round" stroke-width="2" fill="#222938" height="6" width="32.48153" y="2.79587" x="15.46162"/>
+   <rect stroke="#222938" id="svg_2" stroke-linejoin="round" stroke-width="2" fill="#222938" height="6" width="32.48153" y="13.79587" x="8.69463"/>
+   <rect stroke="#222938" id="svg_3" stroke-linejoin="round" stroke-width="2" fill="#222938" height="6" width="32.48153" y="24.79587" x="1.92765"/>
+  </g>
+ </g>
+</svg>

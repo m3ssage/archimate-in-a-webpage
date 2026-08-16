@@ -1,0 +1,12 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Buitenste cirkel -->
+
+ <!-- Middelste ring -->
+ <!-- Centrale kern (bullseye) -->
+ <g>
+  <title>Layer 1</title>
+  <circle id="svg_1" stroke-width="2" stroke="#222938" fill="#d1badc" r="19" cy="20.74303" cx="29.17957"/>
+  <circle id="svg_2" stroke-width="2" stroke="#222938" fill="#d1badc" r="13" cy="20.74303" cx="29.17957"/>
+  <circle id="svg_3" stroke-width="2" stroke="#222938" fill="#222938" r="7" cy="20.74303" cx="29.17957"/>
+ </g>
+</svg>

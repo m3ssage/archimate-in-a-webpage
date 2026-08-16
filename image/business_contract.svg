@@ -1,0 +1,12 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Outer Rectangle -->
+
+ <!-- Top Divider Line -->
+ <!-- Bottom Divider Line -->
+ <g>
+  <title>Layer 1</title>
+  <rect stroke="#222938" id="svg_1" stroke-linejoin="round" stroke-width="2" fill="#ffffcc" height="30.81852" width="47.1053" y="1.53099" x="1.28827"/>
+  <line stroke="#222938" id="svg_2" stroke-width="2" y2="10.17107" x2="48.39358" y1="10.17107" x1="1.28827"/>
+  <line stroke="#222938" id="svg_3" stroke-width="2" y2="23.70944" x2="48.39358" y1="23.70944" x1="1.28827"/>
+ </g>
+</svg>

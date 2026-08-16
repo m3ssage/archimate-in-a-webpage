@@ -1,0 +1,12 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Stand / Base -->
+
+ <!-- Monitor Screen -->
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="svg_3">
+   <polygon stroke="#222938" id="svg_1" stroke-linejoin="round" stroke-width="2" fill="#bcd9ae" points="15.639793850947854,28.926705942484148 11.023372905606493,37.451094974556725 47.954742431640625,37.451094974556725 43.33832541290576,28.926705942484148 "/>
+   <rect stroke="#222938" id="svg_2" stroke-linejoin="round" stroke-width="2" fill="#bcd9ae" rx="4" height="26.79093" width="36.93137" y="2.13578" x="11.02337"/>
+  </g>
+ </g>
+</svg>

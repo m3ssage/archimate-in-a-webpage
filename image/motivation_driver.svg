@@ -1,0 +1,17 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Wielbasis -->
+
+ <!-- 8 Spaken / Handvatten -->
+ <!-- Centrale naaf -->
+ <g>
+  <title>Layer 1</title>
+  <circle id="svg_1" stroke-width="2" stroke="#222938" fill="#d1badc" r="14" cy="22.66599" cx="27.49498"/>
+  <g id="svg_2" stroke-linecap="round" stroke-width="2" stroke="#222938">
+   <line id="svg_3" y2="43.66599" x2="27.49498" y1="1.66599" x1="27.49498"/>
+   <line id="svg_4" y2="22.66599" x2="48.49498" y1="22.66599" x1="6.49498"/>
+   <line id="svg_5" y2="37.51599" x2="42.34498" y1="7.81599" x1="12.64498"/>
+   <line id="svg_6" y2="7.81599" x2="42.34498" y1="37.51599" x1="12.64498"/>
+  </g>
+  <circle id="svg_7" stroke-width="2" stroke="#222938" fill="#222938" r="4.5" cy="22.66599" cx="27.49498"/>
+ </g>
+</svg>

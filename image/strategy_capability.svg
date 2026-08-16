@@ -1,0 +1,10 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Outer capability silhouette -->
+
+ <!-- Internal grid lines -->
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" stroke-linejoin="round" stroke-width="2" stroke="#222938" fill="#efbd5d" d="m17.94199,31.91989l30,0l0,-30l-10,0l0,10l-10,0l0,10l-10,0l0,10z"/>
+  <path id="svg_2" stroke-linecap="round" stroke-width="2" stroke="#222938" fill="none" d="m27.94199,21.91989l0,10m10,-20l0,20m-10,-10l20,0m-10,-10l10,0"/>
+ </g>
+</svg>

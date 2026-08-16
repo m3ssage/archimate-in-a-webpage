@@ -1,0 +1,10 @@
+<svg width="49.99999999999999" height="49.99999999999999" xmlns="http://www.w3.org/2000/svg">
+ <!-- Outer Card Rectangle -->
+
+ <!-- Top-Left Inset Tab Line -->
+ <g>
+  <title>Layer 1</title>
+  <rect id="svg_1" stroke-linejoin="round" stroke-width="2" stroke="#222938" fill="#edd779" height="29" width="42" y="1.61793" x="6.40673"/>
+  <polyline id="svg_2" stroke-linejoin="round" stroke-width="2" stroke="#222938" fill="none" points="6.406734228134155,8.617925643920898 27.406734228134155,8.617925643920898 27.406734228134155,1.6179256439208984 "/>
+ </g>
+</svg>

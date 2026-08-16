@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ArchiMate 3.x Visualizer - Cytoscape.js</title>
+
+  <!-- Core Cytoscape Library -->
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
+  <!-- Dagre Layout Engine & Cytoscape Wrapper via JSDelivr -->
+  <script src="https://cdn.jsdelivr.net/npm/dagre@0.8.5/dist/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+
+  <!-- Page stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="header">
+  <h1>ArchiMate 3.x Topology</h1>
+  <p>Interactive Architecture Graph (Cytoscape.js + Dagre)</p>
+</div>
+
+<div id="cy"></div>
+
+<script>
+  // Graph data (embedded). The diagram setup — styles (archimateStylesheet),
+  // badges, and the Cytoscape instance (cy) — lives in archimate-styles.js,
+  // which is loaded after this script and reads the `archimateElements`
+  // global defined here.
+  const archimateElements = [
+    // --- LAYER CONTAINERS (Compound Parent Nodes) ---
+    { data: { id: 'layer-biz', label: 'Business Layer', layer: 'Business' } },
+    { data: { id: 'layer-app', label: 'Application Layer', layer: 'Application' } },
+    { data: { id: 'layer-tech', label: 'Technology Layer', layer: 'Technology' } },
+    { data: { id: 'layer-stg', label: 'Strategy Layer', layer: 'Strategy' } },
+    { data: { id: 'layer-mot', label: 'Motivation Layer', layer: 'Motivation' } },
+    { data: { id: 'layer-impl', label: 'Implementation Layer', layer: 'Implementation' } },
+    { data: { id: 'layer-bas', label: 'Basic Layer', layer: 'Basic' } },
+
+    // --- BUSINESS LAYER NODES ---
+    {
+      data: {
+        id: 'biz-proc',
+        label: 'Handle Claim\n(Process)',
+        parent: 'layer-biz',
+        layer: 'Business',
+        aspect: 'Behavior',
+        concept: 'BusinessProcess'
+      }
+    },
+    {
+      data: {
+        id: 'biz-service',
+        label: 'Claim Filing API\n(Business Service)',
+        parent: 'layer-biz',
+        layer: 'Business',
+        concept: 'BusinessService'
+      }
+    },
+    {
+      data: {
+        id: 'biz-collab',
+        label: 'Business Collaboration',
+        parent: 'layer-biz',
+        layer: 'Business',
+        aspect: 'ActiveStructure',
+        concept: 'BusinessCollaboration'
+      }
+    },
+    {
+      data: {
+        id: 'biz-func',
+        label: 'Business Function',
+        parent: 'layer-biz',
+        layer: 'Business',
+        aspect: 'Behavior',
+        concept: 'BusinessFunction'
+      }
+    },
+    {
+      data: {
+        id: 'biz-interface',
+        label: 'Business Interface',
+        parent: 'layer-biz',
+        layer: 'Business',
+        aspect: 'ActiveStructure',
+        concept: 'BusinessInterface'
+      }
+    },
+    {
+      data: {
+        id: 'biz-object',
+        label: 'Business Object',
+        parent: 'layer-biz',
+        layer: 'Business',
+        aspect: 'PassiveStructure',
+        concept: 'BusinessObject'
+      }
+    },
+
+    {
+      data: {
+        id: 'biz-actor',
+        label: 'Business Actor',
+        parent: 'layer-biz',
+        layer: 'Business',
+        aspect: 'ActiveStructure',
+        concept: 'BusinessActor'
+      }
+    },
+    {
+      data: {
+        id: 'biz-role',
+        label: 'Business Role',
+        parent: 'layer-biz',
+        layer: 'Business',
+        aspect: 'ActiveStructure',
+        concept: 'BusinessRole'
+      }
+    },
+    {
+      data: {
+        id: 'biz-contract',
+        label: 'Business Contract',
+        parent: 'layer-biz',
+        layer: 'Business',
+        aspect: 'PassiveStructure',
+        concept: 'BusinessContract'
+      }
+    },
+    {
+      data: {
+        id: 'biz-event',
+        label: 'Business Event',
+        parent: 'layer-biz',
+        layer: 'Business',
+        aspect: 'Behavior',
+        concept: 'BusinessEvent'
+      }
+    },
+    {
+      data: {
+        id: 'biz-interaction',
+        label: 'Business Interaction',
+        parent: 'layer-biz',
+        layer: 'Business',
+        aspect: 'Behavior',
+        concept: 'BusinessInteraction'
+      }
+    },
+    {
+      data: {
+        id: 'biz-product',
+        label: 'Business Product',
+        parent: 'layer-biz',
+        layer: 'Business',
+        aspect: 'PassiveStructure',
+        concept: 'BusinessProduct'
+      }
+    },
+    {
+      data: {
+        id: 'biz-representation',
+        label: 'Business Representation',
+        parent: 'layer-biz',
+        layer: 'Business',
+        aspect: 'PassiveStructure',
+        concept: 'BusinessRepresentation'
+      }
+    },
+
+    // --- APPLICATION LAYER NODES ---
+    {
+      data: {
+        id: 'app-service',
+        label: 'Policy Validation\n(App Service)',
+        parent: 'layer-app',
+        layer: 'Application',
+        concept: 'ApplicationService'
+      }
+    },
+    {
+      data: {
+        id: 'app-comp',
+        label: 'Claims Engine\n(Component)',
+        parent: 'layer-app',
+        layer: 'Application',
+        aspect: 'ActiveStructure',
+        concept: 'ApplicationComponent'
+      }
+    },
+    {
+      data: {
+        id: 'app-data',
+        label: 'Claim Record\n(Data Object)',
+        parent: 'layer-app',
+        layer: 'Application',
+        aspect: 'PassiveStructure',
+        concept: 'ApplicationDataObject'
+      }
+    },
+    {
+      data: {
+        id: 'app-collab',
+        label: 'Application Collaboration',
+        parent: 'layer-app',
+        layer: 'Application',
+        aspect: 'ActiveStructure',
+        concept: 'ApplicationCollaboration'
+      }
+    },
+    {
+      data: {
+        id: 'app-func',
+        label: 'Application Function',
+        parent: 'layer-app',
+        layer: 'Application',
+        aspect: 'Behavior',
+        concept: 'ApplicationFunction'
+      }
+    },
+    {
+      data: {
+        id: 'app-interface',
+        label: 'Application Interface',
+        parent: 'layer-app',
+        layer: 'Application',
+        aspect: 'ActiveStructure',
+        concept: 'ApplicationInterface'
+      }
+    },
+    {
+      data: {
+        id: 'app-proc',
+        label: 'Application Process',
+        parent: 'layer-app',
+        layer: 'Application',
+        aspect: 'Behavior',
+        concept: 'ApplicationProcess'
+      }
+    },
+
+    {
+      data: {
+        id: 'app-event',
+        label: 'Application Event',
+        parent: 'layer-app',
+        layer: 'Application',
+        aspect: 'Behavior',
+        concept: 'ApplicationEvent'
+      }
+    },
+    {
+      data: {
+        id: 'app-interaction',
+        label: 'Application Interaction',
+        parent: 'layer-app',
+        layer: 'Application',
+        aspect: 'Behavior',
+        concept: 'ApplicationInteraction'
+      }
+    },
+
+    // --- TECHNOLOGY LAYER NODES ---
+    {
+      data: {
+        id: 'tech-node',
+        label: 'App Server Cluster\n(Node)',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'ActiveStructure',
+        concept: 'TechnologyNode'
+      }
+    },
+    {
+      data: {
+        id: 'tech-db',
+        label: 'Postgres Instance\n(Technology Service)',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        concept: 'TechnologyService'
+      }
+    },
+    {
+      data: {
+        id: 'tech-artifact',
+        label: 'Technology Artifact',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'PassiveStructure',
+        concept: 'TechnologyArtifact'
+      }
+    },
+    {
+      data: {
+        id: 'tech-collab',
+        label: 'Technology Collaboration',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'ActiveStructure',
+        concept: 'TechnologyCollaboration'
+      }
+    },
+    {
+      data: {
+        id: 'tech-func',
+        label: 'Technology Function',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'Behavior',
+        concept: 'TechnologyFunction'
+      }
+    },
+    {
+      data: {
+        id: 'tech-interface',
+        label: 'Technology Interface',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'ActiveStructure',
+        concept: 'TechnologyInterface'
+      }
+    },
+    {
+      data: {
+        id: 'tech-proc',
+        label: 'Technology Process',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'Behavior',
+        concept: 'TechnologyProcess'
+      }
+    },
+    {
+      data: {
+        id: 'tech-interaction',
+        label: 'Technology Interaction',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'Behavior',
+        concept: 'TechnologyInteraction'
+      }
+    },
+
+    {
+      data: {
+        id: 'tech-device',
+        label: 'Technology Device',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'ActiveStructure',
+        concept: 'TechnologyDevice'
+      }
+    },
+    {
+      data: {
+        id: 'tech-sys-software',
+        label: 'System Software',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'ActiveStructure',
+        concept: 'TechnologySystemSoftware'
+      }
+    },
+    {
+      data: {
+        id: 'tech-comm-network',
+        label: 'Communication Network',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'ActiveStructure',
+        concept: 'TechnologyCommunicationNetwork'
+      }
+    },
+    {
+      data: {
+        id: 'tech-path',
+        label: 'Technology Path',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'ActiveStructure',
+        concept: 'TechnologyPath'
+      }
+    },
+    {
+      data: {
+        id: 'tech-event',
+        label: 'Technology Event',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'Behavior',
+        concept: 'TechnologyEvent'
+      }
+    },
+
+    // --- PHYSICAL LAYER NODES (part of the Technology layer in ArchiMate 3.x) ---
+    {
+      data: {
+        id: 'phys-equipment',
+        label: 'Physical Equipment',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'ActiveStructure',
+        concept: 'PhysicalEquipment'
+      }
+    },
+    {
+      data: {
+        id: 'phys-facility',
+        label: 'Physical Facility',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'ActiveStructure',
+        concept: 'PhysicalFacility'
+      }
+    },
+    {
+      data: {
+        id: 'phys-material',
+        label: 'Physical Material',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'PassiveStructure',
+        concept: 'PhysicalMaterial'
+      }
+    },
+    {
+      data: {
+        id: 'phys-dist-network',
+        label: 'Distribution Network',
+        parent: 'layer-tech',
+        layer: 'Technology',
+        aspect: 'ActiveStructure',
+        concept: 'PhysicalDistributionNetwork'
+      }
+    },
+
+    // --- STRATEGY LAYER NODES ---
+    {
+      data: {
+        id: 'stg-capability',
+        label: 'Capability',
+        parent: 'layer-stg',
+        layer: 'Strategy',
+        concept: 'StrategyCapability'
+      }
+    },
+    {
+      data: {
+        id: 'stg-course',
+        label: 'Course of Action',
+        parent: 'layer-stg',
+        layer: 'Strategy',
+        concept: 'StrategyCourseOfAction'
+      }
+    },
+    {
+      data: {
+        id: 'stg-resource',
+        label: 'Strategy Resource',
+        parent: 'layer-stg',
+        layer: 'Strategy',
+        concept: 'StrategyResource'
+      }
+    },
+    {
+      data: {
+        id: 'stg-value-stream',
+        label: 'Value Stream',
+        parent: 'layer-stg',
+        layer: 'Strategy',
+        concept: 'StrategyValueStream'
+      }
+    },
+
+    // --- MOTIVATION LAYER NODES ---
+    {
+      data: {
+        id: 'mot-assessment',
+        label: 'Assessment',
+        parent: 'layer-mot',
+        layer: 'Motivation',
+        concept: 'MotivationAssessment'
+      }
+    },
+    {
+      data: {
+        id: 'mot-constraint',
+        label: 'Constraint',
+        parent: 'layer-mot',
+        layer: 'Motivation',
+        concept: 'MotivationConstraint'
+      }
+    },
+    {
+      data: {
+        id: 'mot-driver',
+        label: 'Driver',
+        parent: 'layer-mot',
+        layer: 'Motivation',
+        concept: 'MotivationDriver'
+      }
+    },
+    {
+      data: {
+        id: 'mot-goal',
+        label: 'Goal',
+        parent: 'layer-mot',
+        layer: 'Motivation',
+        concept: 'MotivationGoal'
+      }
+    },
+    {
+      data: {
+        id: 'mot-meaning',
+        label: 'Meaning',
+        parent: 'layer-mot',
+        layer: 'Motivation',
+        concept: 'MotivationMeaning'
+      }
+    },
+    {
+      data: {
+        id: 'mot-outcome',
+        label: 'Outcome',
+        parent: 'layer-mot',
+        layer: 'Motivation',
+        concept: 'MotivationOutcome'
+      }
+    },
+    {
+      data: {
+        id: 'mot-principle',
+        label: 'Principle',
+        parent: 'layer-mot',
+        layer: 'Motivation',
+        concept: 'MotivationPrinciple'
+      }
+    },
+    {
+      data: {
+        id: 'mot-requirement',
+        label: 'Requirement',
+        parent: 'layer-mot',
+        layer: 'Motivation',
+        concept: 'MotivationRequirement'
+      }
+    },
+    {
+      data: {
+        id: 'mot-stakeholder',
+        label: 'Stakeholder',
+        parent: 'layer-mot',
+        layer: 'Motivation',
+        concept: 'MotivationStakeholder'
+      }
+    },
+    {
+      data: {
+        id: 'mot-value',
+        label: 'Motivation Value',
+        parent: 'layer-mot',
+        layer: 'Motivation',
+        concept: 'MotivationValue'
+      }
+    },
+
+    // --- IMPLEMENTATION & MIGRATION LAYER NODES ---
+    {
+      data: {
+        id: 'impl-deliverable',
+        label: 'Deliverable',
+        parent: 'layer-impl',
+        layer: 'Implementation',
+        aspect: 'PassiveStructure',
+        concept: 'ImplementationDeliverable'
+      }
+    },
+    {
+      data: {
+        id: 'impl-plateau',
+        label: 'Plateau',
+        parent: 'layer-impl',
+        layer: 'Implementation',
+        aspect: 'PassiveStructure',
+        concept: 'ImplementationPlateau'
+      }
+    },
+    {
+      data: {
+        id: 'impl-workpackage',
+        label: 'Work Package',
+        parent: 'layer-impl',
+        layer: 'Implementation',
+        aspect: 'Behavior',
+        concept: 'ImplementationWorkPackage'
+      }
+    },
+    {
+      data: {
+        id: 'impl-event',
+        label: 'Implementation Event',
+        parent: 'layer-impl',
+        layer: 'Implementation',
+        aspect: 'Behavior',
+        concept: 'ImplementationEvent'
+      }
+    },
+    {
+      data: {
+        id: 'impl-gap',
+        label: 'Gap',
+        parent: 'layer-impl',
+        layer: 'Implementation',
+        aspect: 'PassiveStructure',
+        concept: 'ImplementationGap'
+      }
+    },
+
+    // --- BASIC / OTHER LAYER NODES ---
+    {
+      data: {
+        id: 'bas-location',
+        label: 'Location',
+        parent: 'layer-bas',
+        layer: 'Basic',
+        concept: 'BasicLocation'
+      }
+    },
+
+    // --- RELATIONSHIPS (Typed ArchiMate Edges) ---
+    // 1. Serving: Business Service serves Business Process
+    {
+      data: {
+        id: 'e1',
+        source: 'biz-service',
+        target: 'biz-proc',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 2. Realization: Application Service realizes Business Service
+    {
+      data: {
+        id: 'e2',
+        source: 'app-service',
+        target: 'biz-service',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 3. Realization: Component realizes App Service
+    {
+      data: {
+        id: 'e3',
+        source: 'app-comp',
+        target: 'app-service',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 4. Access: Component accesses Data Object
+    {
+      data: {
+        id: 'e4',
+        source: 'app-comp',
+        target: 'app-data',
+        relation: 'Access',
+        label: 'reads/writes'
+      }
+    },
+    // 5. Assignment: Tech Node hosts App Component
+    {
+      data: {
+        id: 'e5',
+        source: 'tech-node',
+        target: 'app-comp',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 6. Serving: Tech DB serves App Component
+    {
+      data: {
+        id: 'e6',
+        source: 'tech-db',
+        target: 'app-comp',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 7. Assignment: Business Collaboration assigned to Business Process
+    {
+      data: {
+        id: 'e7',
+        source: 'biz-collab',
+        target: 'biz-proc',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 8. Realization: Business Function realizes Business Process
+    {
+      data: {
+        id: 'e8',
+        source: 'biz-func',
+        target: 'biz-proc',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 9. Serving: Business Interface serves Business Process
+    {
+      data: {
+        id: 'e9',
+        source: 'biz-interface',
+        target: 'biz-proc',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 10. Access: Business Process accesses Business Object
+    {
+      data: {
+        id: 'e10',
+        source: 'biz-proc',
+        target: 'biz-object',
+        relation: 'Access',
+        label: 'reads/writes'
+      }
+    },
+    // 11. Realization: Business Process realizes Business Service
+    {
+      data: {
+        id: 'e11',
+        source: 'biz-proc',
+        target: 'biz-service',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 12. Assignment: Application Collaboration assigned to Application Process
+    {
+      data: {
+        id: 'e12',
+        source: 'app-collab',
+        target: 'app-proc',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 13. Realization: Application Process realizes Application Function
+    {
+      data: {
+        id: 'e13',
+        source: 'app-proc',
+        target: 'app-func',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 14. Realization: Application Function realizes Application Service
+    {
+      data: {
+        id: 'e14',
+        source: 'app-func',
+        target: 'app-service',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 15. Serving: Application Interface serves Application Process
+    {
+      data: {
+        id: 'e15',
+        source: 'app-interface',
+        target: 'app-proc',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 16. Access: Application Process accesses Data Object
+    {
+      data: {
+        id: 'e16',
+        source: 'app-proc',
+        target: 'app-data',
+        relation: 'Access',
+        label: 'reads/writes'
+      }
+    },
+    // 17. Assignment: Technology Collaboration assigned to Technology Process
+    {
+      data: {
+        id: 'e17',
+        source: 'tech-collab',
+        target: 'tech-proc',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 18. Realization: Technology Process realizes Technology Function
+    {
+      data: {
+        id: 'e18',
+        source: 'tech-proc',
+        target: 'tech-func',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 19. Realization: Technology Function realizes Technology Service
+    {
+      data: {
+        id: 'e19',
+        source: 'tech-func',
+        target: 'tech-db',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 20. Serving: Technology Interface serves Technology Process
+    {
+      data: {
+        id: 'e20',
+        source: 'tech-interface',
+        target: 'tech-proc',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 21. Access: Technology Process accesses Technology Artifact
+    {
+      data: {
+        id: 'e21',
+        source: 'tech-proc',
+        target: 'tech-artifact',
+        relation: 'Access',
+        label: 'reads/writes'
+      }
+    },
+    // 22. Assignment: Technology Artifact assigned to Technology Node
+    {
+      data: {
+        id: 'e22',
+        source: 'tech-artifact',
+        target: 'tech-node',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 23. Realization: Application Function realizes Business Process
+    {
+      data: {
+        id: 'e23',
+        source: 'app-func',
+        target: 'biz-proc',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 24. Realization: Technology Service realizes Application Service
+    {
+      data: {
+        id: 'e24',
+        source: 'tech-db',
+        target: 'app-service',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 25. Serving: Application Interface serves Business Service
+    {
+      data: {
+        id: 'e25',
+        source: 'app-interface',
+        target: 'biz-service',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 26. Serving: Technology Interface serves Application Component
+    {
+      data: {
+        id: 'e26',
+        source: 'tech-interface',
+        target: 'app-comp',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 27. Assignment: Business Actor fulfills Business Role
+    {
+      data: {
+        id: 'e27',
+        source: 'biz-actor',
+        target: 'biz-role',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 28. Assignment: Business Role assigned to Business Process
+    {
+      data: {
+        id: 'e28',
+        source: 'biz-role',
+        target: 'biz-proc',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 29. Serving: Business Event triggers Business Process
+    {
+      data: {
+        id: 'e29',
+        source: 'biz-event',
+        target: 'biz-proc',
+        relation: 'Serving',
+        label: 'triggers'
+      }
+    },
+    // 30. Realization: Business Interaction realizes Business Service
+    {
+      data: {
+        id: 'e30',
+        source: 'biz-interaction',
+        target: 'biz-service',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 31. Serving: Business Contract governs Business Service
+    {
+      data: {
+        id: 'e31',
+        source: 'biz-contract',
+        target: 'biz-service',
+        relation: 'Aggregation',
+        label: 'governs'
+      }
+    },
+    // 32. Realization: Business Product realizes Business Service
+    {
+      data: {
+        id: 'e32',
+        source: 'biz-product',
+        target: 'biz-service',
+        relation: 'Composition',
+        label: 'realizes'
+      }
+    },
+    // 33. Access: Business Representation accesses Business Object
+    {
+      data: {
+        id: 'e33',
+        source: 'biz-representation',
+        target: 'biz-object',
+        relation: 'Access',
+        label: 'reads/writes'
+      }
+    },
+    // 34. Serving: Application Event triggers Application Process
+    {
+      data: {
+        id: 'e34',
+        source: 'app-event',
+        target: 'app-proc',
+        relation: 'Serving',
+        label: 'triggers'
+      }
+    },
+    // 35. Realization: Application Interaction realizes Application Service
+    {
+      data: {
+        id: 'e35',
+        source: 'app-interaction',
+        target: 'app-service',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 36. Assignment: Technology Device assigned to Technology Node
+    {
+      data: {
+        id: 'e36',
+        source: 'tech-device',
+        target: 'tech-node',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 37. Assignment: System Software assigned to Technology Node
+    {
+      data: {
+        id: 'e37',
+        source: 'tech-sys-software',
+        target: 'tech-node',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 38. Serving: Communication Network serves Technology Node
+    {
+      data: {
+        id: 'e38',
+        source: 'tech-comm-network',
+        target: 'tech-node',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 39. Serving: Technology Path serves Technology Node
+    {
+      data: {
+        id: 'e39',
+        source: 'tech-path',
+        target: 'tech-node',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 40. Serving: Technology Event triggers Technology Process
+    {
+      data: {
+        id: 'e40',
+        source: 'tech-event',
+        target: 'tech-proc',
+        relation: 'Serving',
+        label: 'triggers'
+      }
+    },
+    // 41. Assignment: Physical Equipment assigned to Technology Node
+    {
+      data: {
+        id: 'e41',
+        source: 'phys-equipment',
+        target: 'tech-node',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 42. Assignment: Physical Facility assigned to Technology Node
+    {
+      data: {
+        id: 'e42',
+        source: 'phys-facility',
+        target: 'tech-node',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 43. Access: Physical Material accessed by Physical Equipment
+    {
+      data: {
+        id: 'e43',
+        source: 'phys-material',
+        target: 'phys-equipment',
+        relation: 'Access',
+        label: 'reads/writes'
+      }
+    },
+    // 44. Serving: Distribution Network serves Physical Facility
+    {
+      data: {
+        id: 'e44',
+        source: 'phys-dist-network',
+        target: 'phys-facility',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 45. Assignment: Strategy Resource assigned to Capability
+    {
+      data: {
+        id: 'e45',
+        source: 'stg-resource',
+        target: 'stg-capability',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 46. Realization: Course of Action realizes Capability
+    {
+      data: {
+        id: 'e46',
+        source: 'stg-course',
+        target: 'stg-capability',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 47. Serving: Value Stream serves Course of Action
+    {
+      data: {
+        id: 'e47',
+        source: 'stg-value-stream',
+        target: 'stg-course',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 48. Serving: Capability serves Business Process
+    {
+      data: {
+        id: 'e48',
+        source: 'stg-capability',
+        target: 'biz-proc',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 49. Assignment: Stakeholder assigned to Driver
+    {
+      data: {
+        id: 'e49',
+        source: 'mot-stakeholder',
+        target: 'mot-driver',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 50. Realization: Driver realizes Goal
+    {
+      data: {
+        id: 'e50',
+        source: 'mot-driver',
+        target: 'mot-goal',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 51. Serving: Assessment serves Driver
+    {
+      data: {
+        id: 'e51',
+        source: 'mot-assessment',
+        target: 'mot-driver',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 52. Realization: Goal realizes Value Stream
+    {
+      data: {
+        id: 'e52',
+        source: 'mot-goal',
+        target: 'stg-value-stream',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 53. Serving: Meaning serves Value
+    {
+      data: {
+        id: 'e53',
+        source: 'mot-meaning',
+        target: 'mot-value',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 54. Serving: Value serves Business Service
+    {
+      data: {
+        id: 'e54',
+        source: 'mot-value',
+        target: 'biz-service',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 55. Realization: Principle realizes Requirement
+    {
+      data: {
+        id: 'e55',
+        source: 'mot-principle',
+        target: 'mot-requirement',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 56. Assignment: Requirement assigned to Work Package
+    {
+      data: {
+        id: 'e56',
+        source: 'mot-requirement',
+        target: 'impl-workpackage',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 57. Access: Constraint accesses Goal
+    {
+      data: {
+        id: 'e57',
+        source: 'mot-constraint',
+        target: 'mot-goal',
+        relation: 'Access',
+        label: 'reads/writes'
+      }
+    },
+    // 58. Realization: Outcome realizes Business Service
+    {
+      data: {
+        id: 'e58',
+        source: 'mot-outcome',
+        target: 'biz-service',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 59. Realization: Work Package realizes Deliverable
+    {
+      data: {
+        id: 'e59',
+        source: 'impl-workpackage',
+        target: 'impl-deliverable',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 60. Realization: Work Package realizes Plateau
+    {
+      data: {
+        id: 'e60',
+        source: 'impl-workpackage',
+        target: 'impl-plateau',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 61. Realization: Deliverable realizes Application Service
+    {
+      data: {
+        id: 'e61',
+        source: 'impl-deliverable',
+        target: 'app-service',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 62. Serving: Plateau serves Technology Node
+    {
+      data: {
+        id: 'e62',
+        source: 'impl-plateau',
+        target: 'tech-node',
+        relation: 'Serving',
+        label: 'serves'
+      }
+    },
+    // 63. Assignment: Location assigned to Technology Node
+    {
+      data: {
+        id: 'e63',
+        source: 'bas-location',
+        target: 'tech-node',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    },
+    // 64. Access: Location accesses Physical Facility
+    {
+      data: {
+        id: 'e64',
+        source: 'bas-location',
+        target: 'phys-facility',
+        relation: 'Access',
+        label: 'reads/writes'
+      }
+    },
+    // 65. Serving: Implementation Event triggers Work Package
+    {
+      data: {
+        id: 'e65',
+        source: 'impl-event',
+        target: 'impl-workpackage',
+        relation: 'Serving',
+        label: 'triggers'
+      }
+    },
+    // 66. Access: Gap accesses Plateau
+    {
+      data: {
+        id: 'e66',
+        source: 'impl-gap',
+        target: 'impl-plateau',
+        relation: 'Access',
+        label: 'reads/writes'
+      }
+    },
+    // 67. Realization: Technology Interaction realizes Technology Service
+    {
+      data: {
+        id: 'e67',
+        source: 'tech-interaction',
+        target: 'tech-db',
+        relation: 'Realization',
+        label: 'realizes'
+      }
+    },
+    // 68. Assignment: Work Package addresses Gap
+    {
+      data: {
+        id: 'e68',
+        source: 'impl-workpackage',
+        target: 'impl-gap',
+        relation: 'Assignment',
+        label: 'assigned to'
+      }
+    }
+  ];
+</script>
+
+<!-- ArchiMate diagram setup: styles (archimateStylesheet), badges, and the
+     Cytoscape instance (cy). Loaded AFTER the data script above. -->
+<script src="archimate-styles.js"></script>
+
+</body>
+</html>

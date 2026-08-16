@@ -1,0 +1,14 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Torso & Legs -->
+
+ <!-- Arms -->
+ <!-- Head -->
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="svg_5">
+   <path stroke="#222938" id="svg_1" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" d="m38.44919,19.40035l0,12.37414l-9.70699,16.49886m9.70699,-16.49886l9.70699,16.49886"/>
+   <line stroke="#222938" id="svg_2" stroke-linecap="round" stroke-width="2" y2="23.25737" x2="48.15618" y1="23.25737" x1="28.74219"/>
+   <circle stroke="#222938" id="svg_3" stroke-width="2" fill="#edd779" r="8.24943" cy="10.00731" cx="38.44919"/>
+  </g>
+ </g>
+</svg>

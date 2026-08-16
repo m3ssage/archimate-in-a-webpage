@@ -1,0 +1,10 @@
+<svg width="50.00000000000001" height="50.00000000000001" xmlns="http://www.w3.org/2000/svg">
+ <!-- Handvat / Steel -->
+
+ <!-- Cirkel -->
+ <g>
+  <title>Layer 1</title>
+  <line id="svg_1" stroke-linecap="round" stroke-width="2" stroke="#222938" y2="23.52861" x2="26.23462" y1="35.02861" x1="14.73462"/>
+  <circle id="svg_2" stroke-width="2" stroke="#222938" fill="#d1badc" r="13" cy="15.02861" cx="34.73462"/>
+ </g>
+</svg>

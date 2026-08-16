@@ -1,0 +1,15 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Doelwit (Target) rechtsboven -->
+
+ <!-- Gebogen pijl linksonder -->
+ <!-- Schacht met curve -->
+ <!-- Pijlpunt -->
+ <g>
+  <title>Layer 1</title>
+  <circle id="svg_1" stroke-width="2" stroke="#222938" fill="#efbd5d" r="12" cy="13.86166" cx="36.49144"/>
+  <circle id="svg_2" stroke-width="2" stroke="#222938" fill="#efbd5d" r="7.5" cy="13.86166" cx="36.49144"/>
+  <circle id="svg_3" stroke-width="1.5" stroke="#222938" fill="#222938" r="3" cy="13.86166" cx="36.49144"/>
+  <path stroke="#222938" id="svg_4" stroke-linecap="round" stroke-width="3" fill="none" d="m5.34651,39.76021c6.83999,-5.53609 6.70268,-11.97526 12.42556,-16.94598"/>
+  <path transform="rotate(-177.233 19.5311 22.9414)" stroke="#222938" id="svg_5" stroke-linejoin="round" fill="#222938" d="m25.13817,26.84125l-11.21409,1.21563l5.09053,-10.23099l1.78369,5.65876l4.33987,3.3566z"/>
+ </g>
+</svg>

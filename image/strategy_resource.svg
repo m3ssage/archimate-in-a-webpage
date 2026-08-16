@@ -1,0 +1,14 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- ArchiMate Resource / Battery Body & Terminal -->
+
+ <!-- Drie interne niveau-lijnen -->
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" stroke-linejoin="round" stroke-width="2" stroke="#222938" fill="#efbd5d" d="m10.41044,1.78702l29,0a4,4 0 0 1 4,4l0,3l2.5,0a2.5,2.5 0 0 1 2.5,2.5l0,5a2.5,2.5 0 0 1 -2.5,2.5l-2.5,0l0,3a4,4 0 0 1 -4,4l-29,0a4,4 0 0 1 -4,-4l0,-16a4,4 0 0 1 4,-4z"/>
+  <g id="svg_2" stroke-linecap="round" stroke-width="2" stroke="#222938">
+   <line id="svg_3" y2="19.78702" x2="14.41044" y1="7.78702" x1="14.41044"/>
+   <line id="svg_4" y2="19.78702" x2="21.41044" y1="7.78702" x1="21.41044"/>
+   <line id="svg_5" y2="19.78702" x2="28.41044" y1="7.78702" x1="28.41044"/>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- ArchiMate Meaning / Thought Cloud -->
+
+ <!-- Hoofdwolk -->
+ <!-- Middelste wolkbel -->
+ <!-- Kleinste wolkbel linksonder -->
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="#222938" fill="#d1badc" d="m20.55802,28.66702c-2.5,0 -4.5,-2 -4,-4.5c-2.5,-1 -4,-4 -2.5,-7c-1.5,-2.5 -1,-6 1.5,-7.5c0,-3 2.5,-5.5 5.5,-5c2,-2.5 6,-3 8.5,-1c2.5,-2 7,-1.5 9,1c3,-0.5 6,1.5 6.5,4.5c2,1.5 3,4.5 2,7c2,2.5 1.5,6 -1,8c0.5,3 -2,5.5 -5,5c-2,2 -5.5,2.5 -8,1c-2.5,1.5 -7,1.5 -9,0c-1,0.5 -2.5,0.5 -3.5,-1.5z"/>
+  <circle id="svg_2" stroke-width="2" stroke="#222938" fill="#d1badc" r="3.2" cy="30.86076" cx="12.69374"/>
+  <circle id="svg_3" stroke-width="2" stroke="#222938" fill="#d1badc" r="2.2" cy="37.53129" cx="8.0116"/>
+ </g>
+</svg>

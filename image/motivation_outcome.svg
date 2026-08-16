@@ -1,0 +1,22 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Doelwit ringen -->
+
+ <!-- Pijlschacht & Veren (Fletching) -->
+ <!-- Pijlpunt -->
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_10">
+   <circle id="svg_1" stroke-width="2" stroke="#222938" fill="#d1badc" r="16" cy="28.85464" cx="18.3319"/>
+   <circle id="svg_2" stroke-width="2" stroke="#222938" fill="#d1badc" r="10.5" cy="28.85464" cx="18.3319"/>
+   <circle id="svg_3" stroke-width="2" stroke="#222938" fill="#d1badc" r="5" cy="28.85464" cx="18.3319"/>
+  </g>
+  <g stroke="null" id="svg_12">
+   <path stroke="#222938" id="svg_9" stroke-linejoin="round" stroke-width="1.5" fill="#222938" d="m17.8992,28.8289l6.96189,-15.93308l3.06615,8.30103l8.05742,4.06523l-18.08546,3.56682z"/>
+   <g stroke="null" id="svg_11">
+    <line stroke="#222938" stroke-width="2" fill="#000000" id="svg_5" y2="3.79085" x2="46.2521" y1="21.4345" x1="27.55748"/>
+    <path stroke="#222938" stroke-width="2" fill="none" id="svg_6" d="m40.15075,10.36774l0.43688,-9.67334"/>
+    <path stroke="#222938" stroke-width="2" fill="none" id="svg_8" d="m40.50144,9.54779l8.94109,-0.56594"/>
+   </g>
+  </g>
+ </g>
+</svg>

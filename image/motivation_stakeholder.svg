@@ -1,0 +1,12 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Cylinder Body & Left Cap -->
+
+ <!-- Right Cylinder Face -->
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_3" stroke="null">
+   <path d="m41.01592,1.41149l-32.20982,0a7.43304,15.93631 0 0 0 0,31.87262l32.20982,0l0,-31.87262z" fill="#d1badc" stroke-width="2" stroke-linejoin="round" id="svg_1" stroke="#222938"/>
+   <ellipse cx="41.01592" cy="17.3478" rx="7.43304" ry="15.93631" fill="#d1badc" stroke-width="2" id="svg_2" stroke="#222938"/>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Central Pointed Banner Body -->
+
+ <!-- Left Extended Barb Line -->
+ <!-- Right Extended Barb Line -->
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="svg_4">
+   <polygon stroke="#222938" id="svg_1" stroke-linejoin="round" stroke-width="2" fill="#bcd9ae" points="2.3633298873901367,15.540943391642145 10.024593353271484,9.081455611472734 40.66965103149414,9.081455611472734 48.33091354370117,15.540943391642145 40.66965103149414,22.000430070131415 10.024593353271484,22.000430070131415 "/>
+   <polyline stroke="#222938" id="svg_2" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" points="16.15360450744629,1.3300704956054688 2.3633298873901367,15.540943391642145 16.15360450744629,29.75181628767882 "/>
+   <polyline stroke="#222938" id="svg_3" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" points="34.5406379699707,1.3300704956054688 48.33091354370117,15.540943391642145 34.5406379699707,29.75181628767882 "/>
+  </g>
+ </g>
+</svg>

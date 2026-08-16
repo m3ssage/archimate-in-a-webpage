@@ -1,0 +1,14 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Outer Hexagon -->
+
+ <!-- Inner Inscribed Lines / Segments -->
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="svg_5">
+   <polygon stroke="#222938" id="svg_1" stroke-linejoin="round" stroke-width="2" fill="#bcd9ae" points="40.78227290511131,5.753768801689148 48.29193553328514,18.20375430583954 40.21965464949608,32.27979648113251 25.534632295370102,32.341848254203796 18.024969667196274,19.891862750053406 26.097248643636703,5.815821051597595 "/>
+   <line stroke="#222938" id="svg_2" stroke-linecap="round" stroke-width="2" y2="18.77092" x2="43.86744" y1="9.26424" x1="37.85292"/>
+   <line stroke="#222938" id="svg_3" stroke-linecap="round" stroke-width="2" y2="19.21909" x2="23.32398" y1="9.49535" x1="29.15209"/>
+   <line stroke="#222938" id="svg_4" stroke-linecap="round" stroke-width="2" y2="28.9311" x2="38.62286" y1="28.9311" x1="27.69404"/>
+  </g>
+ </g>
+</svg>

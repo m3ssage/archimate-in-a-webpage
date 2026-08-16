@@ -1,0 +1,10 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <!-- Back Disk -->
+
+ <!-- Front Disk -->
+ <g>
+  <title>Layer 1</title>
+  <ellipse transform="rotate(-1.01543 32.44 17.6491)" cx="32.43997" cy="17.64909" rx="16" ry="16" fill="#bcd9ae" stroke-width="2" id="svg_2" stroke="#222938"/>
+  <ellipse transform="rotate(-1.01543 27.1337 23.4756)" cx="27.13366" cy="23.47563" rx="16" ry="16" fill="#bcd9ae" stroke-width="2" id="svg_1" stroke="#222938"/>
+ </g>
+</svg>

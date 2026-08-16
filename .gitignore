@@ -1,0 +1,9 @@
+# Transient tooling (from local testing)
+node_modules/
+.pw-browsers/
+.npm-cache/
+
+# Editor / OS junk
+.DS_Store
+Thumbs.db
+*.log
