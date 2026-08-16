@@ -4,3 +4,4 @@ ArchiMate 3.x topology visualizer: Cytoscape.js diagram with 59 concepts across 
 The images folder contains all Archimate badges as SVG
 
 ![screenshot](readme1.png)
+![screenshot2](readme2.png)
